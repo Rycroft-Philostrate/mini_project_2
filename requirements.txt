@@ -1,0 +1,9 @@
+Flask~=2.1.2
+flask-restx
+Flask-CORS
+Flask-SQLAlchemy
+marshmallow~=3.16.0
+PyJWT~=2.4.0
+pytest~=7.1.2
+SQLAlchemy~=1.4.37
+Werkzeug~=2.1.2
