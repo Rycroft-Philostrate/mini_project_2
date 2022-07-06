@@ -9,7 +9,6 @@ auth_ns = Namespace("auth")
 
 @auth_ns.route('/register/')
 class AuthRegister(Resource):
-	@auth_ns.expect(user)
 	@auth_ns.marshal_with(user, code=201, description='OK')
 	def post(self):
 		req_json = request.json

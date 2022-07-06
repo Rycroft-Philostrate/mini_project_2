@@ -10,14 +10,12 @@ user_ns = Namespace('users')
 
 @user_ns.route('/')
 class UsersView(Resource):
-	@user_ns.expect(user)
 	@user_ns.marshal_with(user, as_list=True, code=200, description='OK')
 	@auth_required
 	def get(self, email):
 		"""Get user"""
 		return user_service.get_by_email(email)
 
-	@user_ns.expect(user)
 	@user_ns.marshal_with(user, code=204, description='OK')
 	@auth_required
 	def patch(self, email):
@@ -29,7 +27,6 @@ class UsersView(Resource):
 
 @user_ns.route("/password/")
 class UserView(Resource):
-	@user_ns.expect(user)
 	@user_ns.marshal_with(user, code=204, description='OK')
 	@auth_required
 	def put(self, email):

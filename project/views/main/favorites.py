@@ -11,7 +11,6 @@ favorites_ns = Namespace("favorites")
 @favorites_ns.route("/movies/<int:movie_id>/")
 @favorites_ns.param("movie_id", "ID movie")
 class FavoritesView(Resource):
-    @favorites_ns.expect(favorite)
     @favorites_ns.response(404, 'Not Found')
     @favorites_ns.marshal_with(favorite, code=201, description='OK')
     @auth_required
@@ -21,7 +20,6 @@ class FavoritesView(Resource):
         data = {'movie_id': movie_id, 'user_id': user_id}
         return favorite_service.create(data), 201
 
-    @favorites_ns.expect(favorite)
     @favorites_ns.marshal_with(favorite, code=204, description='OK')
     @auth_required
     def delete(self, movie_id, email):

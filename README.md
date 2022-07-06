@@ -8,6 +8,22 @@ pip install -r requirements.txt
 pip install -r requirements.dev.txt
 ```
 
+- Установить переменные среды
+    - Bash (Linux/MACOS)
+    ```shell
+    export FLASK_APP=run.py
+    export FLASK_ENV='development'
+    ```
+    - CMD (Windows)
+    ```shell
+    set FLASK_APP=run.py
+    set FLASK_ENV=development
+    ```
+    - PowerShell (Windows)
+    ```shell
+    $env:FLASK_APP = "run"
+    $env:FLASK_ENV = "development"
+    ```
 - Создание моделей (очистит БД и создаст все модели, указанные в импорте)
 ```shell
 python create_tables.py
@@ -15,7 +31,7 @@ python create_tables.py
 
 - Загрузка данных в базу
 ```shell
-python load_fixture.py
+python load_fixtures.py
 ```
 Скрпит читает файл fixtures.json и загружает данные в базу. Если данные уже загружены - выводит соответсвующее сообщение. 
 

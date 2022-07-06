@@ -9,7 +9,7 @@ movies_ns = Namespace('movies')
 
 @movies_ns.route('/')
 class MoviesView(Resource):
-	@movies_ns.expect(page_parser, movie)
+	@movies_ns.expect(page_parser)
 	@movies_ns.marshal_with(movie, as_list=True, code=200, description='OK')
 	def get(self):
 		"""Get all movies"""
@@ -19,7 +19,6 @@ class MoviesView(Resource):
 @movies_ns.route('/<int:movie_id>/')
 @movies_ns.param('movie_id', 'ID movie')
 class MovieView(Resource):
-	@movies_ns.expect(movie)
 	@movies_ns.response(404, 'Not Found')
 	@movies_ns.marshal_with(movie, code=200, description='OK')
 	def get(self, movie_id: int):
